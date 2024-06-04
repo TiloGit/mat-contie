@@ -1,3 +1,5 @@
+[![Docker Repository on Quay](https://quay.io/repository/tsombrero/mat-contie/status "Docker Repository on Quay")](https://quay.io/repository/tsombrero/mat-contie)
+
 # mat-contie
 Memory Analyzer (MAT) as container
 
@@ -11,7 +13,7 @@ mat-contie is a docker container that allows you to analyse a Java heap dump fro
 All you need is Docker installed on your machine.
 
 cd to the location of your heap dump file, then:
-```docker run --mount src=$(pwd),target=/data,type=bind -it mat-conti <dump filename> <heap size for mat> <reports>```
+```docker run --mount src=$(pwd),target=/data,type=bind -it quay.io/tsombrero/mat-contie <dump filename> <heap size for mat> <reports>```
 
 dump filename - hprof heap dump file name
 
@@ -22,8 +24,8 @@ reports - a comma separated list of the following: suspects, overview, top_compo
 
 ### Example:
 
-```docker run -it --mount src=$(pwd),target=/data,type=bind mat-conti heap1.hprof 11g suspects,overview```
-```docker run -it --mount src=$(pwd),target=/data,type=bind mat-conti my_heap_dump.hprof 48g suspects,overview,top_components```
+```docker run -it --mount src=$(pwd),target=/data,type=bind quay.io/tsombrero/mat-contie heap1.hprof 11g suspects,overview```
+```docker run -it --mount src=$(pwd),target=/data,type=bind quay.io/tsombrero/mat-contie my_heap_dump.hprof 48g suspects,overview,top_components```
 
 # What problem does it solve?
 
@@ -31,9 +33,6 @@ Analyzing large heap dumps is a long process which needs a lot of computing reso
 
 mat-contie can help with that because it can let you run the analysis on any remote machine that has docker installed. Then you can copy the output to your local machine, run MAT and open the heap dump.
 mat-contie will also generate HTML reports which might save you the effort of running MAT.
-
-# How to build:
-see GH workflow
 
 # How it works?
 
